@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
             }
         }
         var x = 0;
+        var g = 2;
         // xyt
     }
 }
