@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        var x = 1;
+        var x = 0;
         // xyt
     }
 }
