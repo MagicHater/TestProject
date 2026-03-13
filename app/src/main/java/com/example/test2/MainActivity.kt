@@ -25,22 +25,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.test2.ui.theme.Test2Theme
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Test2Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    RedButtonScreen(modifier = Modifier.padding(innerPadding))
-                }
-            }
-        }
-    }
-}
-
 @Composable
-fun RedButtonScreen(modifier: Modifier = Modifier) {
+fun RedButtonContent(modifier: Modifier = Modifier) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val animatedScale by animateFloatAsState(
@@ -70,10 +56,24 @@ fun RedButtonScreen(modifier: Modifier = Modifier) {
     }
 }
 
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            Test2Theme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    RedButtonContent(modifier = Modifier.padding(innerPadding))
+                }
+            }
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun RedButtonPreview() {
     Test2Theme {
-        RedButtonScreen()
+        RedButtonContent()
     }
 }
